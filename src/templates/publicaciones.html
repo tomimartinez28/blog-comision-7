@@ -3,69 +3,52 @@
 
 
 {% block contenido %}
-    <h2>Publicaciones</h2>
+<h2>Publicaciones</h2>
 
 
 
-    <!-- Card con la publicacion -->
-    <div class="card">
-        <div class="card-header">
-          10/11/2023
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Publicacion 1</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Leer mas</a>
-        </div>
-      </div>
+{% for publicacion in publicaciones %}
+
+<!-- Card con la publicacion -->
+<div class="card">
+  <div class="card-header">
+    {{publicacion.fecha}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{publicacion.titulo}}</h5>
+    <p class="card-text">{{publicacion.cuerpo}}</p>
+    <a href="#" class="btn btn-primary">Leer mas</a>
+  </div>
+</div>
 
 
 
-
-    <!-- Card con la publicacion -->
-    <div class="card">
-        <div class="card-header">
-          10/11/2023
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Publicacion 1</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Leer mas</a>
-        </div>
-      </div>
+{% endfor %}
 
 
 
 
-    <!-- Card con la publicacion -->
-    <div class="card">
-        <div class="card-header">
-          10/11/2023
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Publicacion 1</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Leer mas</a>
-        </div>
-      </div>
 
 
 
 
-    <!-- Card con la publicacion -->
-    <div class="card">
-        <div class="card-header">
-          10/11/2023
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Publicacion 1</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Leer mas</a>
-        </div>
-      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 {% endblock contenido %}
-    
