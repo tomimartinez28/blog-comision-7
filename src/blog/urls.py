@@ -24,6 +24,6 @@ urlpatterns = [
     path('', views.index_view, name='index'),
 
     # aca van los includes
-    path('publiciones/', include('publicaciones.urls')),
+    path('publicaciones/', include('publicaciones.urls')),
 
 ]
