@@ -16,8 +16,12 @@
   <div class="card-header">
     {{publicacion.fecha}}
     <span>
+      <!-- Tachito -->
+      <a href="{% url 'eliminar-publicacion' publicacion.id %}"><i class="fa-solid fa-trash"></i></a>
+      <!-- Editar -->
       <a href="{% url 'modificar-publicacion' publicacion.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
     </span>
+
   </div>
   <div class="card-body">
     <h5 class="card-title">{{publicacion.titulo}}</h5>
