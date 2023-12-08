@@ -1,8 +1,9 @@
+from typing import Any
 from django.shortcuts import render, redirect
 from .models import Publicacion
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-
-from .forms import PublicarForm
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.urls import reverse
+from .forms import PublicarForm, ComentarioForm
 
 """ # View basada en funcion, para enlistar las publicaciones.
 def publicaciones_view(request):
@@ -41,6 +42,14 @@ class Publicar(CreateView):
     template_name = 'publicaciones/publicar.html'
     form_class = PublicarForm
 
+    def form_valid(self, form):
+        f = form.save(commit=False) # aca le paro el carro al formulario para que no guarde
+        f.creador_id = self.request.user.id
+        return super().form_valid(f)
+    
+
+    def get_success_url(self):
+        return reverse('publicaciones')
 
 
 # # View basada en clase para MODIFICAR una publicacion.
@@ -56,3 +65,32 @@ class EliminarPublicacionView(DeleteView):
     model=Publicacion
     template_name='publicaciones/eliminar-publicacion.html'
     success_url = '../ver-publicaciones/'
+
+
+# View para ver en detalle UNA publicacion
+
+class DetallePublicacion(DetailView):
+    model=Publicacion
+    template_name = 'publicaciones/detalle.html'
+    context_object_name = 'publicacion'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ComentarioForm()
+        return context
+
+
+    def post(self, request, *args, **kwargs):
+
+        publicacion = self.get_object()
+        form = ComentarioForm(request.POST)
+
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.creador_id = self.request.user.id
+            comentario.publicacion = publicacion
+            comentario.save()
+            return super().get(request)
+        else:
+            return super().get(request)
+        

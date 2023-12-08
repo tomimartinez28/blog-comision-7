@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+    <form method="post">{% csrf_token %}
+        {{form}}
+        <button type="submit">Iniciar sesion</button>
+        <a href="{% url 'registrarse' %}">No tenes una cuenta? Create una.</a>
+
+    </form>
+    
+{% endblock contenido %}
+    

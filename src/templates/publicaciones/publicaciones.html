@@ -14,7 +14,7 @@
 <!-- Card con la publicacion -->
 <div class="card">
   <div class="card-header">
-    {{publicacion.fecha}}
+    {{publicacion.fecha}} - <strong>@{{publicacion.creador.username}}</strong>
     <span>
       <!-- Tachito -->
       <a href="{% url 'eliminar-publicacion' publicacion.id %}"><i class="fa-solid fa-trash"></i></a>
@@ -26,7 +26,7 @@
   <div class="card-body">
     <h5 class="card-title">{{publicacion.titulo}}</h5>
     <p class="card-text">{{publicacion.cuerpo}}</p>
-    <a href="#" class="btn btn-primary">Leer mas</a>
+    <a href="{% url 'detalle-publicacion' publicacion.id %}" class="button">Leer mas</a>
   </div>
 </div>
 

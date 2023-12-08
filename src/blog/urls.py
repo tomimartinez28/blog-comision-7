@@ -25,5 +25,6 @@ urlpatterns = [
 
     # aca van los includes
     path('publicaciones/', include('publicaciones.urls')),
+    path('usuarios/', include('usuarios.urls'))
 
 ]
