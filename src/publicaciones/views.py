@@ -1,9 +1,11 @@
 from typing import Any
 from django.shortcuts import render, redirect
-from .models import Publicacion
+from .models import Publicacion, Comentario
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse
 from .forms import PublicarForm, ComentarioForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .mixins import ColaboradorMixin, CreadorMixin
 
 """ # View basada en funcion, para enlistar las publicaciones.
 def publicaciones_view(request):
@@ -37,7 +39,7 @@ def publicar_view(request):
  """
 
 # View basada en clase para CREAR una publicacion.
-class Publicar(CreateView):
+class Publicar(LoginRequiredMixin, ColaboradorMixin, CreateView):
     model = Publicacion
     template_name = 'publicaciones/publicar.html'
     form_class = PublicarForm
@@ -53,7 +55,7 @@ class Publicar(CreateView):
 
 
 # # View basada en clase para MODIFICAR una publicacion.
-class ModificarPublicacionView(UpdateView):
+class ModificarPublicacionView(LoginRequiredMixin, CreadorMixin, UpdateView):
     model = Publicacion
     template_name = 'publicaciones/modificar-publicacion.html'
     form_class = PublicarForm
@@ -61,7 +63,7 @@ class ModificarPublicacionView(UpdateView):
 
 
 # View basada en clase para ELIMINAR una publicacion.
-class EliminarPublicacionView(DeleteView):
+class EliminarPublicacionView(LoginRequiredMixin, CreadorMixin, DeleteView):
     model=Publicacion
     template_name='publicaciones/eliminar-publicacion.html'
     success_url = '../ver-publicaciones/'
@@ -81,6 +83,9 @@ class DetallePublicacion(DetailView):
 
 
     def post(self, request, *args, **kwargs):
+        
+        if not self.request.user.is_authenticated:
+            return redirect('login')
 
         publicacion = self.get_object()
         form = ComentarioForm(request.POST)
@@ -93,4 +98,20 @@ class DetallePublicacion(DetailView):
             return super().get(request)
         else:
             return super().get(request)
-        
+
+
+
+class BorrarComentarioView(LoginRequiredMixin, CreadorMixin, DeleteView):
+    template_name='comentarios/borrar-comentario.html'
+    model=Comentario
+
+    def get_success_url(self):
+        return reverse('detalle-publicacion', args=[self.object.publicacion.id])
+    
+class EditarComentarioView(LoginRequiredMixin, CreadorMixin, UpdateView):
+    template_name='comentarios/editar-comentario.html'
+    model=Comentario
+    form_class = ComentarioForm
+
+    def get_success_url(self):
+        return reverse('detalle-publicacion', args=[self.object.publicacion.id])
