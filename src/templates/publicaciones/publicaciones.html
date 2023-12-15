@@ -5,6 +5,35 @@
 {% block contenido %}
 <h2>Publicaciones</h2>
 
+<form method="get">
+
+  <!--Filtro por categoria-->
+  <select name="categoria" id="">
+    <option value="">Todas</option>
+    
+    {% for categoria in categorias %}
+    <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+    {% endfor %}
+
+  </select>
+
+  <!--Ordenar-->
+  <select name="orderby" id="">
+    <option value="">Ordenar por</option>
+    <option value="fecha_asc">Fecha ascendente</option>
+    <option value="fecha_desc">Fecha descendentes</option>
+    <option value="alf_asc">Alfabeticamente ascendente</option>
+    <option value="alf_desc">Alfabeticamente descendente</option>
+  </select>
+
+
+
+
+
+  <button type="submit">Filtrar</button>
+</form>
+
+
 
 
 <a href="{% url 'publicar' %}" class="button">Publicar algo nuevo</a>
@@ -31,6 +60,7 @@
   <div class="card-body">
     <h5 class="card-title">{{publicacion.titulo}}</h5>
     <p class="card-text">{{publicacion.cuerpo}}</p>
+    <p class="card-text"><i class="fa-solid fa-tag"></i>{{publicacion.categoria}}</p>
     <a href="{% url 'detalle-publicacion' publicacion.id %}" class="button">Leer mas</a>
   </div>
 </div>

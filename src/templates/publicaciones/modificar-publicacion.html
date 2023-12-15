@@ -2,7 +2,7 @@
 
 {% block contenido %}
     <h3>Modificar</h3>
-    <form method="post"> {% csrf_token %}
+    <form method="post" enctype="multipart/form-data"> {% csrf_token %}
         {{form}}
 
         <button type="submit">Guardar cambios</button>
