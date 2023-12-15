@@ -37,6 +37,13 @@
 
 								
 								{% if user.is_authenticated %}
+								
+								{% if user.imagen_perfil %}
+								<img src="{{user.imagen_perfil.url}}" alt="Imagen de perfil" style="height: 40px; width: 40px; border-radius: 200px;">
+								{% else %}
+								<img src="{% static 'images/default_avatar.jpeg' %}" alt="" style="height: 40px; width: 40px; border-radius: 200px;">
+								{% endif %}
+								
 								<a href="">{{user.first_name}}</a>
 								{% else %}
 								<a href="{% url 'login' %}">Iniciar Sesion</a>
