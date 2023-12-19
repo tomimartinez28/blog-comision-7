@@ -9,6 +9,10 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
