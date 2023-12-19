@@ -12,10 +12,10 @@ DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'NAME': 'tomimartinez28$blog_db',
+        'USER': 'tomimartinez28',
+        'PASSWORD': 'Comision7',
+        'HOST': 'tomimartinez28.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
