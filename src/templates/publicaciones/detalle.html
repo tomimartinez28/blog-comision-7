@@ -5,14 +5,14 @@
 <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
         <div class="col-md-4">
-            
+
             {% if publicacion.imagen %}
             <img src="{{ publicacion.imagen.url }}" class="img-fluid rounded-start" alt="...">
             {% else %}
             <img src="{% static 'images/cat.jpg' %}" class="img-fluid rounded-start" alt="...">
             {% endif %}
-                
-            
+
+
         </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -39,38 +39,38 @@
 
 
 
-    
+
 <!--Caja de Comentarios-->
 <div class="card" style="width: 100%; padding: 5px;">
     <div class="card-header">
-      COMENTARIOS
+        COMENTARIOS
     </div>
 
 
     <ul class="list-group list-group-flush">
-        
-        
+
+
         {% if publicacion.comentarios.all %}
 
         {% for comentario in publicacion.comentarios.all %}
         <div class="comentario-header">
-        <strong>{{comentario.creador}}</strong>
-        <a href="{% url 'borrar-comentario' comentario.id %}"><i class="fa-solid fa-trash"></i></a>
-        <a href="{% url 'editar-comentario' comentario.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
+            <strong>{{comentario.creador}}</strong>
+            <a href="{% url 'borrar-comentario' comentario.id %}"><i class="fa-solid fa-trash"></i></a>
+            <a href="{% url 'editar-comentario' comentario.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
         </div>
 
         <li class="list-group-item">{{comentario.texto}}</li>
         {% endfor %}
-            
+
         {% else %}
-            <p>No hay comentario aun.</p>
+        <p>No hay comentario aun.</p>
         {% endif %}
 
-        
+
 
     </ul>
 
-  </div>
+</div>
 
 
 {% endblock contenido %}
