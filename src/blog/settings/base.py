@@ -25,7 +25,7 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 SECRET_KEY = 'django-insecure-vg7x6t(hrns=g-y_tcl%h_@wqi3&u=kzbpbhuno*%uiqhu+b)2'
 
 
-ALLOWED_HOSTS = ['tomimartinez28.pythonanywhere.com']
+ALLOWED_HOSTS = ['tomimartinez28.pythonanywhere.com', '127.0.0.1']
 
 # VARIABLES DE LOGIN
 

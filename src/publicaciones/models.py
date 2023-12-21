@@ -18,6 +18,7 @@ class Publicacion(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, related_name='publicaciones', null=True)
     creador = models.ForeignKey(Usuario, related_name='publicaciones', on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='imagenes_publicaciones', null=True, blank=True)
+    me_gusta = models.ManyToManyField(Usuario, related_name='posteos', blank=True)
 
     def __str__(self):
         return self.titulo
@@ -37,3 +38,5 @@ class Comentario(models.Model):
 
     def __str__(self):
         return self.publicacion.titulo + "-" + self.creador.username
+    
+

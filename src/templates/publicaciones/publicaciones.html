@@ -62,6 +62,24 @@
     <p class="card-text">{{publicacion.cuerpo}}</p>
     <p class="card-text"><i class="fa-solid fa-tag"></i>{{publicacion.categoria}}</p>
     <a href="{% url 'detalle-publicacion' publicacion.id %}" class="button">Leer mas</a>
+
+
+    <form action="{% url 'me-gusta' %}" method="post">{% csrf_token %}
+      <input type="hidden" value="{{publicacion.id}}" name="publicacion_id">
+      
+      
+      {% if user in publicacion.me_gusta.all %}
+      <button type="submit">Ya no me gusta</button>
+      {% else %}
+      <button type="submit">Me gusta</button>
+      {% endif %}
+        
+      
+    </form>
+
+    Likes: {{ publicacion.me_gusta.count }}
+
+
   </div>
 </div>
 
