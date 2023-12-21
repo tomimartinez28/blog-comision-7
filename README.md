@@ -1,7 +1,7 @@
 # Nombre de mi blog
 
 _Aplicacion web diseñada por el grupo ___  de la comision 7 del informatorio, segunda cohorte de 2023.
-Consiste en un blog para la divulgacion de inormacion referida a VIDEOJUEGOS/LIBROS_
+Consiste en un blog para la divulgacion de informacion referida a VIDEOJUEGOS/LIBROS_
 
 ## Comenzando 🚀
 
@@ -79,7 +79,7 @@ _Este proyecto fue desarrollado gracias a la colaboración de:_
 
 
 
-También puedes mirar la lista de todos los [contribuyentes](pone la url del la seccion de contribuyentes) quíenes han participado en este proyecto. 
+También puedes mirar la lista de todos los [contribuyentes](https://github.com/tomimartinez28/blog-comision-7/graphs/contributors) quíenes han participado en este proyecto. 
 
 
 
