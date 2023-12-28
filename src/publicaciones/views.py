@@ -171,5 +171,4 @@ def me_gusta(request):
             publicacion.me_gusta.add(usuario)
 
 
-
     return redirect('publicaciones')
